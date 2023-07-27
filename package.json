@@ -17,7 +17,11 @@
     "url": "https://github.com/marcosTulli/node-http/issues"
   },
   "homepage": "https://github.com/marcosTulli/node-http#readme",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body": "^5.1.0",
+    "formidable": "^1.2.0"
+  },
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
