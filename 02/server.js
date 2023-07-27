@@ -1,14 +1,10 @@
-const https = require('https');
+const http = require('http');
 const services = require('../services');
 const url = require('url');
 const jsonBody = require('body/json');
 const fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
-};
-const server = https.createServer(options);
+const server = http.createServer();
 
 server.on('request', (request, response) => {
   const parsedUrl = url.parse(request.url, true);
@@ -25,7 +21,7 @@ server.on('request', (request, response) => {
       services.createUser(body['userName']);
     }
   });
-  response.end('THis was served with https!');
+  // response.end('THis was served with https!');
 
   // Without Library
 
@@ -41,4 +37,4 @@ server.on('request', (request, response) => {
   //   });
 });
 
-server.listen(443);
+server.listen(8080);
