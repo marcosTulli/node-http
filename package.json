@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/marcosTulli/node-http/issues"
   },
-  "homepage": "https://github.com/marcosTulli/node-http#readme"
+  "homepage": "https://github.com/marcosTulli/node-http#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
