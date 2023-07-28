@@ -31,6 +31,24 @@ server.on('request', (request, response) => {
         services.createUser(body['userName']);
       }
     });
+  } else if (request.method === 'POST' && parsedUrl.pathname === '/upload') {
+    const form = new formidable.IncomingForm({
+      uploadDir: __dirname,
+      keepExtensions: true,
+      multiples: true,
+      maxFileSize: 5 * 1024 * 1024,
+      encoding: 'utf-8',
+    });
+    form.parse(request, (err, fields, files) => {
+      if (err) {
+        console.log(err);
+        response.statusCode = 500;
+        response.end('Error!');
+      }
+      console.log(files);
+      response.statusCode = 200;
+      response.end('Success!');
+    });
   } else {
     fs.createReadStream('./index.html').pipe(response);
   }
