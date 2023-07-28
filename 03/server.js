@@ -7,6 +7,12 @@ const fs = require('fs');
 const server = http.createServer();
 
 server.on('request', (request, response) => {
+  request.on('error', (err) => {
+    console.log(`request error ${err}`);
+  });
+  response.on('error', (err) => {
+    console.log(`response error ${err}`);
+  });
   const parsedUrl = url.parse(request.url, true);
   if (request.method === 'GET' && parsedUrl.pathname === '/metadata') {
     const { id } = parsedUrl.query;
